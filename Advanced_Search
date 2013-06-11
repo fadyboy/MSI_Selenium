@@ -1,0 +1,18 @@
+using NUnit.Framework;
+using NUnit.Core;
+
+namespace SeleniumTests
+{
+    public class Advanced_Search
+    {
+        [Suite] public static TestSuite Suite
+        {
+            get
+            {
+                TestSuite suite = new TestSuite("Advanced_Search");
+                suite.Add(new Untitled());
+                return suite;
+            }
+        }
+    }
+}

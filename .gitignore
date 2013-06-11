@@ -1,0 +1,131 @@
+# Handles:
+#- Visual Studio
+
+#- Resharper
+#- Sitecore
+#- TDS
+#- Windows files
+#- SVN
+#- Also has detail about how to include files within ignored folders
+
+
+#Sitecore files
+
+
+#/Main/Website/Brother.Web/App_Data/MediaCache
+#/Main/Website/Brother.Web/App_Data/Sitecore/*
+#!/Main/Website/Brother.Web/App_Data/Sitecore/
+#!/Main/Website/Brother.Web/App_Data/Sitecore/packages
+#/Main/Website/Brother.Web/App_Data/Sitecore/packages/*
+#!/Main/Website/Brother.Web/App_Data/Sitecore/packages/*.xml
+
+
+
+#As we're ignoring all the files and folders underneath the sitecore folder, specifying files to exclude within say, the admin subfolder, just won't work.
+
+#Reason is that the admin folder is already ignored. To handle this, use the following approach:
+
+
+# First ignore the sitecore folder's files and folders
+#/Main/Website/Brother.Web/sitecore/*
+#/Main/Website/Brother.Web/sitecore modules/Debug*
+#/Main/Website/Brother.Web/sitecore modules/Shell*
+#/Main/Website/Brother.Web/sitecore modules/Web*
+#/Main/Website/Brother.Web/sitecore_files/*
+#/Main/Website/Brother.Web/upload/*
+#/Main/Website/Brother.Web/temp/*
+#!/Main/Website/Brother.Web/sitecore/RedirectUrlPage.*
+
+# Then tell it to exclude the sitecore folder itself
+#!/Main/Website/Brother.Web/sitecore
+
+# Then tell it to ignore the admin folder and files 
+#?/Main/Website/Brother.Web/sitecore/admin/*
+
+# Then exclude the admin folder, and the relevant files you want to include (such as reindex.aspx)
+#!?/Main/Website/Brother.Web/sitecore/admin
+#!/Main/Website/Brother.Web/sitecore/web.config
+#!?/Main/Website/Brother.Web/sitecore/admin/reindex.aspx*
+
+#TDS
+#_DEV
+#/Main/Sitecore/Brother.Master/*
+#!/Main/Sitecore/Brother.Master/*.scproj
+#!/Main/Sitecore/Brother.Master/sitecore
+#/Main/Sitecore/Brother.Core/*
+#!/Main/Sitecore/Brother.Core/*.scproj
+#!/Main/Sitecore/Brother.Core/sitecore
+
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.csproj.sitecore
+ipch/
+obj/
+[Bb]in
+[Bb]in_x64
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+aspnet_client
+
+
+/Deploy/*.zip
+
+#MonoDevelop
+*.pidb
+*.userprefs
+
+
+#Project files
+[Bb]uild/
+
+
+#Subversion files
+.svn
+
+
+# Office Temp Files
+~$*
+
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
+
+!/Main/Services/Brother.Services.User
+/Main/Website/Brother.Web/sitemap_*.xml
+/Main/Website/Brother.Web/Brother.Web.Publish.xml
+
+/Deploy/Website
+/Deploy/ESB
